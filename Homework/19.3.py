@@ -1,51 +1,49 @@
 from tkinter import *
 
-langas = Tk()
-issaugota = StringVar()
-langas.geometry('300x80')
+window = Tk()
+saved = StringVar()
+window.geometry('300x80')
 
-def spausdinti(event):
-    ivesta = ivesti.get()
-    issaugota.set(ivesta)
-    rezultatas['text'] = f'Labas,{ivesta} !'
-
-
-uzrasas = Label(langas, text="Iveskite vardą")
-ivesti = Entry(langas)
-mygtukas = Button(langas, text='Patvirtinti', fg="white", bg="pink", command=spausdinti)
-langas.bind('<Return>', lambda event: spausdinti())
-rezultatas = Label(langas, text="")
-
-mygtukas.bind("<Button-1>", spausdinti)
-langas.bind("<Return>", spausdinti)
-
-uzrasas.grid(row=0, column=0)
-ivesti.grid(row=0, column=1)
-mygtukas.grid(row=0, column=2)
-rezultatas.grid(row=1, columnspan=3)
+def printing(event):
+    input = enter.get()
+    saved.set(input)
+    result['text'] = f'Labas,{input} !'
 
 
-meniu = Menu(langas)
-langas.config(menu=meniu)
-submeniu = Menu(meniu, tearoff=0)
+note = Label(window, text="Iveskite vardą")
+enter = Entry(enter)
+button = Button(window, text='Patvirtinti', fg="white", bg="pink", command=printing)
+window.bind('<Return>', lambda event: printing())
+result = Label(window, text="")
 
-def isvalyti():
-    rezultatas['text']=''
-def atkurti_paskutini():
-    rezultatas['text'] = f'Labas,{issaugota.get()}!'
-def uzdaryti():
-    langas.destroy()
+button.bind("<Button-1>", printing)
+window.bind("<Return>", printing)
 
-meniu.add_cascade(labe="Meniu", menu=submeniu)
-submeniu.add_command(label="Išvalyti", command=isvalyti)
-submeniu.add_command(label="Atkurti paskutinį", command=atkurti_paskutini)
-submeniu.add_separator()
-submeniu.add_command(label="Išeiti", command=uzdaryti)
+note.grid(row=0, column=0)
+enter.grid(row=0, column=1)
+button.grid(row=0, column=2)
+result.grid(row=1, columnspan=3)
 
 
-statusbar = Label(langas, text="on the way…", bd=1, relief=SUNKEN, anchor=W)
+my_menu = Menu(window)
+window.config(menu=my_menu)
+submeniu = Menu(my_menu, tearoff=0)
+
+def delete():
+    result['text']=''
+def restore_last():
+    result['text'] = f'Labas,{saved.get()}!'
+def close():
+    window.destroy()
+
+my_menu.add_cascade(labe="Meniu", menu=submenu)
+submenu.add_command(label="Išvalyti", command=delete)
+submenu.add_command(label="Atkurti paskutinį", command=restore_last)
+submenu.add_separator()
+submenu.add_command(label="Išeiti", command=close)
+
+
+statusbar = Label(window, text="on the way…", bd=1, relief=SUNKEN, anchor=W)
 statusbar.pack(side=BOTTOM, fill=X)
 
-#Nerandu klaidos
-
-langas.mainloop()
+window.mainloop()
