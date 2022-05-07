@@ -28,18 +28,18 @@ my_menu = Menu(window)
 window.config(menu=my_menu)
 submeniu = Menu(meniu, tearoff=0)
 
-def isvalyti():
+def clear():
     result['text']=''
-def atkurti_paskutini():
+def restore_last():
     result['text'] = f'Labas,{saved.get()}!'
-def uzdaryti():
+def close():
     window.destroy()
 
 my_menu.add_cascade(labe="Meniu", menu=submenu)
-submenu.add_command(label="Išvalyti", command=isvalyti)
-submenu.add_command(label="Atkurti paskutinį", command=atkurti_paskutini)
+submenu.add_command(label="Išvalyti", command=clear)
+submenu.add_command(label="Atkurti paskutinį", command=restore_last)
 submenu.add_separator()
-submenu.add_command(label="Išeiti", command=uzdaryti)
+submenu.add_command(label="Išeiti", command=close)
 
 
 window.mainloop()
