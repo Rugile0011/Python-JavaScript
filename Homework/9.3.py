@@ -3,14 +3,14 @@ import calendar
 
 app = Flask(__name__)
 
-@app.route('/metai')
-def metai():
-    keliamieji = []
-    metus = range(1900, 2101)
-    for x in metus:
+@app.route('/year')
+def year():
+    leap = []
+    range_of_year = range(1900, 2101)
+    for x in range_of_year:
         if calendar.isleap(x):
-            keliamieji.append(x)
-    return render_template('index.html', sarasas=keliamieji)
+            leap.append(x)
+    return render_template('index.html', list=leap)
 
 
 app.run()
