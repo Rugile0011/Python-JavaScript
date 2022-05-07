@@ -10,4 +10,3 @@ while True:
     elif num == 0:
         break
 
-#nesigavo atspausdinti txt faile zodziu atskirose eilutese
