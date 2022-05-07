@@ -9,9 +9,8 @@ print("Dice 1 =", dice1, "Dice 2 =", dice2, "Dice 3 =", dice3)
 
 while True:
     if dice1 or dice2 or dice3 == 5:
-        print("Pralaimejai!")
+        print("Try again!")
         break
     else:
-        print("Laimejai!")
+        print("You win!")
 
-# Klausimas: bet kuriuo atveju raso "Pralaimejai!"
